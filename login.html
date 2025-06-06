@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Link to bootstrap css CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <!-- link to bootstrap js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <!-- link to bootstrap icons  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- link to custom css  -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top px-4">
+        <a class="navbar-brand" href="index.html">FinSim</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg"
+            aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg"
+            aria-labelledby="navbarOffcanvasLgLabel">
+            <div class="offcanvas-header">
+                <h5>FinSim</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Partner With Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success rounded-3" href="singup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-secondary rounded-3" href="login.html">Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-5 pt-4">
+        <h1>Welcome to FinSim</h1>
+    </div>
+    <form action="" class="col-md-4 col-10 mx-auto" id="myForm">
+        <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control border-3" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="mb-0">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control border-3" id="myPass2" placeholder="Enter password" name="pswd"min="8">
+        </div>
+        <p id="small2"></p>
+        <button type="submit" class="btn btn-success rounded-3" id="logbtn">Login</button>
+    </form>
+</body>
+    <script>
+        var logBtn = document.getElementById("logbtn");
+        
+        document.getElementById("myForm").onsubmit =()=>{
+            event.preventDefault();
+        }
+
+        logBtn.onclick =()=>{
+            var email = document.getElementById("email").value;
+            var password2 = document.getElementById("myPass2").value;
+            var storedmail = localStorage.getItem("email")
+            var storedpassword = localStorage.getItem("password")
+            if(email == "" && password2 == ""){
+                document.getElementById("small2").style.fontWeight = "bold"
+                document.getElementById("small2").innerHTML = "Fill in your details"
+            }
+            else if(email == storedmail && password2 == storedpassword){
+                document.getElementById("small2").innerHTML = ""
+                window.location.href = "transaction.html";
+            }
+            else{
+                document.getElementById("small2").style.color = "red"
+                document.getElementById("small2").innerHTML = "Invalid login details"
+            }
+        }
+    </script>
+</html>
