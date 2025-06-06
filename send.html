@@ -42,10 +42,10 @@
                         <a class="nav-link" href="javascript:void(0)">Support</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-success rounded-3" href="singup.html">Sign Up</a>
+                        <a class="btn btn-success rounded-3" href="send.html">Send</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-secondary rounded-3" href="login.html">Log In</a>
+                        <a class="btn btn-secondary rounded-3" href="transaction.html">Transactions</a>
                     </li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
         <div class="text-center">
             <h2 class="fw-bold">Send Money</h2>
         </div>
-        <form action="" class="col-md-4 col-10 mx-auto">
+        <form action="" class="col-md-4 col-10 mx-auto" id="mySend">
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label">Account Number</label>
                 <input type="text" class="form-control" id="accnum" placeholder="0123456789" name="email">
@@ -75,12 +75,19 @@
 </body>
     <script>
         var button = document.getElementById("trf");
-
+        document.getElementById("mySend").onsubmit = ()=>{
+            event.preventDefault()
+        }
         button.onclick =()=>{
             var account = document.getElementById("accnum").value
             var amount = document.getElementById("amt").value
             var note = document.getElementById("note").value
 
+            let balance =  Number(localStorage.getItem("spend")) - Number(amount);
+            localStorage.setItem("amountspent", amount)
+            localStorage.setItem("money", balance)
+            localStorage.setItem("newmoney", 0)
+            console.log(balance)
             window.alert(`Your transfer of ${amount} to ${account} was succesful`)
         }
     </script>
