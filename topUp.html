@@ -66,7 +66,7 @@
                 <i class="bi bi-person input-group-text"></i>
             </div>
             <div class="mb-3">
-                <label for="">Account Number</label>
+                <label for="">Amount</label>
                 <input type="text" class="form-control" id="amt2" placeholder="Enter amount" name="pswd">
             </div>
             <button type="submit" class="btn btn-success rounded-3" id="top">Top-Up</button>
@@ -78,6 +78,7 @@
         
         topbtn.onclick =()=>{
             var amount = document.getElementById("amt2").value;
+            alert(`Your top-up of ${amount} was succesful`);
             localStorage.setItem("newmoney", amount)
             localStorage.getItem("money") =  localStorage.getItem("amountspent", amount)
             amount.value = ""
